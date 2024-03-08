@@ -1,0 +1,24 @@
+CYPRESS TYPESCRIPT
+ref: https://www.codemotion.com/magazine/frontend/web-developer/how-to-set-up-a-cypress-typescript-project/
+
+- create new folder
+- run this script:
+    1. npm init -y - and package.json will show
+    2. npm install cypress --save-dev
+    3. npx cypress open - to open cypres
+- when open cypress, do this:
+    1. choose E2E Testing
+    2. the following file structure will show:
+        - cypress.config.js
+        - cypress
+            - downloads (X)
+            - e2e (X)
+            - fixtures
+            - support
+    3. click Continue
+- configure typescript
+    1. npm install typescript --save-dev
+        - will install typescript as dependency in project
+    2. npx tsc --init
+        - will create tsconfig.json
+        - replace its code with the copied code
