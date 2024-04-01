@@ -1,5 +1,5 @@
 describe('User Management in TM Digital Website', () => {
-    it('Add new Admin', () => {
+    it ('Add new Admin', () => {
         //Login
         cy.visit('/login', {
             auth: {
@@ -19,6 +19,6 @@ describe('User Management in TM Digital Website', () => {
         cy.get('#staticBackdropLabel').should('be.visible');
         cy.get('#newUser_name').type('Mitha chekcing Cypress');
         cy.get('#newUser_username').type('mithaccc');
-        cy.get('#newUser_email').type('mithaccc@mailinator.com');        
+        cy.get('#newUser_email').type('mithaccc@mailinator.com');
     })
 })

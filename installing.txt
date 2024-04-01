@@ -1,5 +1,6 @@
 CYPRESS TYPESCRIPT
-ref: https://www.codemotion.com/magazine/frontend/web-developer/how-to-set-up-a-cypress-typescript-project/
+ref: https://www.codemotion.com/magazine/frontend/web-developer/h
+ow-to-set-up-a-cypress-typescript-project/
 
 - create new folder
 - run this script:
@@ -22,3 +23,46 @@ ref: https://www.codemotion.com/magazine/frontend/web-developer/how-to-set-up-a-
     2. npx tsc --init
         - will create tsconfig.json
         - replace its code with the copied code
+    3. add this script to cypress/tsconfig.json
+        {
+            "extends": "../tsconfig.json",
+            "include": [
+            "**/*.ts"
+            ]
+        }
+    4. add file xStep.ts to support/step_definitions folder
+
+
+====
+Cypress Cucumber
+reference: https://www.npmjs.com/package/cypress-cucumber-preprocessor
+1. run script: npm install --save-dev cypress-cucumber-preprocessor
+2. file cypress/plugins/index.js
+3. add this code to point 2
+    const cucumber = require('cypress-cucumber-preprocessor').default
+
+    module.exports = (on, config) => {
+    on('file:preprocessor', cucumber())
+    }
+4.file cypress/support/cypress.json for feature files
+    {
+    "testFiles": "**/*.feature"
+    }
+5. add this script to cypress.config.js
+    e2e: {
+        setupNodeEvents(on, config) {
+        const cucumber = require('cypress-cucumber-preprocessor').default;
+        const browserify = require('@cypress/browserify-preprocessor');
+        const options = {
+            ...browserify.defaultOptions,
+            typescript: require.resolve('typescript'),
+        };
+        on('file:preprocessor', cucumber(options));
+        },    
+        "baseUrl": "http://www.google.com/",
+        "specPattern": "**/*.feature",
+        "excludeSpecPattern": ["namadirektori_tempat_file_stepdefinition/*.ts"]
+    }
+6. add feature file in cypress/integration (X)
+6. add feature folder in e2e/.. folder
+7. add step definition script in support/step_definitions folder
